@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin - Complaints</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="{{ url_for('static', filename='js/admin.js') }}"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <div class="max-w-6xl mx-auto p-6">
+    <h1 class="text-3xl font-bold mb-4">Admin Complaint Management</h1>
+    <div class="flex gap-2 mb-4">
+      <input id="departmentFilter" class="border p-2 rounded" placeholder="Filter by department" />
+      <button id="loadComplaints" class="bg-indigo-600 text-white px-4 py-2 rounded">Load</button>
+    </div>
+
+    <div class="overflow-x-auto bg-white rounded-lg shadow">
+      <table class="w-full text-sm">
+        <thead class="bg-slate-200">
+          <tr>
+            <th class="p-2">ID</th><th class="p-2">Complaint</th><th class="p-2">Dept</th><th class="p-2">Priority</th><th class="p-2">Status</th><th class="p-2">Action</th>
+          </tr>
+        </thead>
+        <tbody id="complaintsTable"></tbody>
+      </table>
+    </div>
+
+    <a href="/" class="text-blue-600 mt-4 inline-block">← Back</a>
+  </div>
+</body>
+</html>
