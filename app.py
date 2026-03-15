@@ -1,7 +1,6 @@
 """Flask entrypoint for AI-powered complaint management system."""
 from __future__ import annotations
 
-import os
 import threading
 import time
 
@@ -10,7 +9,6 @@ from flask import Flask, jsonify, render_template, request
 
 from analytics.analytics_service import get_dashboard_metrics
 from database.db import init_db, session
-from ml_models.train_model import train_model
 from retraining.auto_retrainer import AutoRetrainer
 from services.complaint_service import ComplaintService
 from services.data_loader_service import DataLoaderService
@@ -25,15 +23,10 @@ retrainer = AutoRetrainer()
 
 def bootstrap_system():
     init_db()
-
-    model_path = os.path.join("ml_models", "model.pkl")
-    if not os.path.exists(model_path):
-        train_model()
-
     complaints_df = DataLoaderService.load_complaint_dataset()
     queries_df = DataLoaderService.load_query_dataset()
 
-    complaint_service.classifier.load()
+    complaint_service.classifier.train()
     query_service.model.train()
 
     with session() as conn:

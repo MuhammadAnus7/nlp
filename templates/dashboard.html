@@ -8,19 +8,16 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script defer src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-purple-900 text-white">
-  <main class="max-w-7xl mx-auto px-4 py-8">
-    <header class="flex justify-between items-center mb-6">
-      <h1 class="text-3xl font-bold">Complaint Analytics</h1>
-      <a href="/" class="px-4 py-2 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20">Back to Portal</a>
-    </header>
-
-    <section class="grid md:grid-cols-2 gap-5">
-      <div class="bg-white/10 border border-white/20 backdrop-blur-xl rounded-2xl p-4"><canvas id="deptChart"></canvas></div>
-      <div class="bg-white/10 border border-white/20 backdrop-blur-xl rounded-2xl p-4"><canvas id="priorityChart"></canvas></div>
-      <div class="bg-white/10 border border-white/20 backdrop-blur-xl rounded-2xl p-4"><canvas id="responseChart"></canvas></div>
-      <div class="bg-white/10 border border-white/20 backdrop-blur-xl rounded-2xl p-4"><canvas id="trendChart"></canvas></div>
-    </section>
-  </main>
+<body class="bg-slate-50 min-h-screen">
+  <div class="max-w-7xl mx-auto p-6">
+    <h1 class="text-3xl font-bold mb-6">Complaint Analytics Dashboard</h1>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-white p-4 rounded-xl shadow"><canvas id="deptChart"></canvas></div>
+      <div class="bg-white p-4 rounded-xl shadow"><canvas id="priorityChart"></canvas></div>
+      <div class="bg-white p-4 rounded-xl shadow"><canvas id="responseChart"></canvas></div>
+      <div class="bg-white p-4 rounded-xl shadow"><canvas id="trendChart"></canvas></div>
+    </div>
+    <a href="/" class="text-blue-600 mt-4 inline-block">← Back</a>
+  </div>
 </body>
 </html>

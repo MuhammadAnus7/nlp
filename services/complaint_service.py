@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from database.db import session
 from ml_models.complaint_classifier import ComplaintClassifier
-from ml_models.sentiment_analyzer import SentimentAnalyzer
+from ml_models.sentiment_model import SentimentModel
 from services.log_service import log_event
 from services.priority_service import PriorityService
 
@@ -11,7 +11,7 @@ from services.priority_service import PriorityService
 class ComplaintService:
     def __init__(self):
         self.classifier = ComplaintClassifier()
-        self.sentiment = SentimentAnalyzer()
+        self.sentiment = SentimentModel()
 
     def submit_complaint(self, text: str):
         dept_pred = self.classifier.predict(text)

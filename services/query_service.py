@@ -1,12 +1,12 @@
 """Service for user query answering."""
 from database.db import session
-from ml_models.query_engine import QueryEngine
+from ml_models.query_answering import QueryAnsweringModel
 from services.log_service import log_event
 
 
 class QueryService:
     def __init__(self):
-        self.model = QueryEngine()
+        self.model = QueryAnsweringModel()
 
     def answer_query(self, question: str):
         result = self.model.answer(question)

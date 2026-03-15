@@ -3,46 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Complaint Helpdesk</title>
+  <title>AI Complaint Portal</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = { theme: { extend: { animation: { float: 'float 5s ease-in-out infinite' }, keyframes: { float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } }}}}};
-  </script>
-  <script defer src="{{ url_for('static', filename='js/app.js') }}"></script>
+  <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-fuchsia-900 text-white">
-  <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.20),_transparent_40%),radial-gradient(circle_at_bottom_right,_rgba(168,85,247,0.20),_transparent_40%)]"></div>
+<body class="bg-slate-100 min-h-screen">
+  <div class="max-w-4xl mx-auto p-6">
+    <h1 class="text-3xl font-bold text-slate-800 mb-6">AI-Powered Complaint & Query Portal</h1>
 
-  <main class="relative z-10 max-w-7xl mx-auto px-4 py-8 md:py-12">
-    <header class="mb-8 text-center animate-float">
-      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">AI Complaint Management System</h1>
-      <p class="text-slate-200 mt-2">Smart routing, sentiment-aware prioritization, and instant query support.</p>
-    </header>
+    <div class="grid md:grid-cols-2 gap-6">
+      <section class="bg-white p-5 rounded-xl shadow-lg transition hover:shadow-2xl">
+        <h2 class="text-xl font-semibold mb-3">Submit Complaint</h2>
+        <textarea id="complaintText" class="w-full border rounded p-3" rows="5" placeholder="Describe your complaint..."></textarea>
+        <button id="submitComplaint" class="mt-3 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Submit</button>
+        <div id="complaintResult" class="mt-3 text-sm"></div>
+      </section>
 
-    <section class="grid lg:grid-cols-2 gap-6">
-      <div class="bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl p-6">
-        <h2 class="text-2xl font-semibold mb-4">Submit a Complaint</h2>
-        <textarea id="complaintText" rows="6" class="w-full rounded-xl bg-slate-900/60 border border-slate-600 p-3 focus:outline-none focus:ring-2 focus:ring-cyan-400" placeholder="Describe your issue in detail..."></textarea>
-        <button id="submitComplaint" class="mt-4 w-full bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl py-3 font-semibold shadow-lg hover:shadow-cyan-500/30 hover:scale-[1.01] transition">Submit Complaint</button>
-        <div id="complaintLoader" class="hidden mt-3 text-cyan-300 text-sm">Analyzing complaint...</div>
-        <div id="complaintResult" class="hidden mt-4 rounded-xl bg-slate-900/60 border border-slate-700 p-4 text-sm"></div>
-      </div>
+      <section class="bg-white p-5 rounded-xl shadow-lg transition hover:shadow-2xl">
+        <h2 class="text-xl font-semibold mb-3">Ask a Question</h2>
+        <input id="queryText" class="w-full border rounded p-3" placeholder="Ask your question..." />
+        <button id="submitQuery" class="mt-3 bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700">Ask AI</button>
+        <div id="queryResult" class="mt-3 text-sm"></div>
+      </section>
+    </div>
 
-      <div class="bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl p-6">
-        <h2 class="text-2xl font-semibold mb-4">AI Query Chatbot</h2>
-        <input id="queryText" class="w-full rounded-xl bg-slate-900/60 border border-slate-600 p-3 focus:outline-none focus:ring-2 focus:ring-fuchsia-400" placeholder="Ask your question..." />
-        <button id="submitQuery" class="mt-4 w-full bg-gradient-to-r from-fuchsia-500 to-purple-600 rounded-xl py-3 font-semibold shadow-lg hover:shadow-fuchsia-500/30 hover:scale-[1.01] transition">Ask AI</button>
-        <div id="queryLoader" class="hidden mt-3 text-fuchsia-300 text-sm">Finding best answer...</div>
-        <div id="queryResult" class="hidden mt-4 rounded-xl bg-slate-900/60 border border-slate-700 p-4 text-sm"></div>
-      </div>
-    </section>
-
-    <nav class="mt-8 flex flex-wrap gap-3 justify-center">
-      <a href="/admin" class="px-4 py-2 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition">Admin Panel</a>
-      <a href="/dashboard" class="px-4 py-2 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition">Analytics Dashboard</a>
-    </nav>
-  </main>
-
-  <div id="toast" class="hidden fixed right-4 bottom-4 rounded-lg px-4 py-3 shadow-lg text-white"></div>
+    <div id="toast" class="fixed right-6 bottom-6 bg-slate-900 text-white px-4 py-2 rounded shadow hidden"></div>
+    <div class="mt-8 space-x-4">
+      <a class="text-blue-600" href="/admin">Admin Panel</a>
+      <a class="text-blue-600" href="/dashboard">Analytics Dashboard</a>
+    </div>
+  </div>
 </body>
 </html>
